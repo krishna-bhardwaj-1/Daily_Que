@@ -1,0 +1,11 @@
+// Last updated: 12/08/2025, 00:11:43
+class Solution {
+    public int[] findArray(int[] pref) {
+        int[] arr=new int[pref.length];
+        arr[0]=pref[0];
+        for(int i=1;i<arr.length;i++){
+            arr[i]=pref[i-1]^pref[i];
+        }
+        return arr;
+    }
+}
