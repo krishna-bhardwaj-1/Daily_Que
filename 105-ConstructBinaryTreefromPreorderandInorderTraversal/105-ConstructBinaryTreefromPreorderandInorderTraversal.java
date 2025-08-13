@@ -1,4 +1,4 @@
-// Last updated: 13/08/2025, 10:48:22
+// Last updated: 13/08/2025, 23:40:46
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -16,23 +16,23 @@
  */
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return createTree(inorder,preorder,0,inorder.length-1,0,preorder.length-1);
+        return createTree(preorder,inorder,0,inorder.length-1,0,preorder.length-1);
     }
-    public TreeNode createTree(int[] in,int[] pre,int ilo,int ihi,int plo,int phi){
+    private TreeNode createTree(int[] pre,int[] in,int ilo,int ihi,int plo,int phi){
         if(ilo>ihi || plo>phi){
             return null;
         }
         TreeNode node=new TreeNode(pre[plo]);
         int idx=search(in,ilo,ihi,pre[plo]);
         int cnt=idx-ilo;
-        node.left=createTree(in,pre,ilo,idx-1,plo+1,plo+cnt);
-        node.right=createTree(in,pre,idx+1,ihi,plo+cnt+1,phi);
+        node.left=createTree(pre,in,ilo,idx-1,plo+1,plo+cnt);
+        node.right=createTree(pre,in,idx+1,ihi,plo+cnt+1,phi);
         return node;
     }
 
-    public int search(int[] in,int ilo,int ihi,int item){
+    private int search(int[] inorder,int ilo,int ihi,int item){
         for(int i=ilo;i<=ihi;i++){
-            if(in[i]==item){
+            if(inorder[i]==item){
                 return i;
             }
         }
