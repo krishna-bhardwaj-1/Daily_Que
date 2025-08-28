@@ -1,4 +1,4 @@
-// Last updated: 28/08/2025, 12:02:40
+// Last updated: 29/08/2025, 00:28:33
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -20,9 +20,9 @@ class Solution {
         int l;
         int v;
         public VerticalPair(TreeNode node,int l,int v){
+            this.node=node;
             this.l=l;
             this.v=v;
-            this.node=node;
         }
     }
     public List<List<Integer>> verticalTraversal(TreeNode root) {
